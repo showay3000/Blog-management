@@ -1,5 +1,5 @@
 
-
+# cli
 from models import session, User, Post
 
 def create_user():
