@@ -1,4 +1,4 @@
-#Blog Management System
+### Blog Management System
 A simple command-line-based blog management system built with Python and SQLAlchemy. This application allows users to create and manage blog posts and authors.
 
 Features
@@ -17,24 +17,12 @@ Python 3.7 or higher
 
 SQLAlchemy (pip install sqlalchemy)
 
-Installation
-Clone the repository or download the files:
-
-bash
-Copy
-git clone https://github.com/yourusername/blog-management-system.git
-cd blog-management-system
-Install the required dependencies:
-
-bash
 Copy
 pip install sqlalchemy
 Usage
 Run the application:
 
-bash
-Copy
-#python cli.py
+## python cli.py
 Follow the on-screen menu to interact with the system:
 
 1. Create User: Add a new user (author).
@@ -47,7 +35,7 @@ Follow the on-screen menu to interact with the system:
 
 5. Exit: Quit the application.
 
-#File Structure
+## File Structure
 Copy
 blog-management-system/
 │
@@ -79,20 +67,5 @@ View Posts:
 Copy
 Select an option: 4
 <Post(id=1, title=My First Post, author=1)>
-Contributing
-Contributions are welcome! If you'd like to improve this project, please follow these steps:
 
-Fork the repository.
-
-Create a new branch for your feature or bugfix.
-
-Commit your changes.
-
-Submit a pull request.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Acknowledgments
-Built with SQLAlchemy.
 
