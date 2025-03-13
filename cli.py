@@ -1,4 +1,4 @@
-# cli.py
+
 
 from models import session, User, Post
 
@@ -35,6 +35,67 @@ def view_posts():
     for post in posts:
         print(post)
 
+def delete_user():
+    user_id = input("Enter user ID to delete: ")
+    user = session.get(User, int(user_id))
+
+    if not user:
+        print("User not found!")
+        return
+
+    session.delete(user)
+    session.commit()
+    print(f"User {user.name} and all their posts deleted successfully!")
+
+def delete_post():
+    post_id = input("Enter post ID to delete: ")
+    post = session.get(Post, int(post_id))
+
+    if not post:
+        print("Post not found!")
+        return
+
+    session.delete(post)
+    session.commit()
+    print(f"Post '{post.title}' deleted successfully!")
+
+def update_post():
+    post_id = input("Enter post ID to update: ")
+    post = session.get(Post, int(post_id))
+
+    if not post:
+        print("Post not found!")
+        return
+
+    print(f"Current title: {post.title}")
+    new_title = input("Enter new title (leave blank to keep current): ")
+    print(f"Current content: {post.content}")
+    new_content = input("Enter new content (leave blank to keep current): ")
+
+    if new_title:
+        post.title = new_title
+    if new_content:
+        post.content = new_content
+
+    session.commit()
+    print("Post updated successfully!")
+
+def search_posts_by_user():
+    user_id = input("Enter user ID to search posts: ")
+    user = session.get(User, int(user_id))
+
+    if not user:
+        print("User not found!")
+        return
+
+    posts = user.posts
+    if not posts:
+        print(f"No posts found for user {user.name}.")
+    else:
+        print(f"Posts by {user.name}:")
+        for post in posts:
+            print(post)
+
 def main():
     while True:
         print("\nBlog Management System")
@@ -42,7 +103,11 @@ def main():
         print("2. Create Post")
         print("3. View Users")
         print("4. View Posts")
-        print("5. Exit")
+        print("5. Delete User")
+        print("6. Delete Post")
+        print("7. Update Post")
+        print("8. Search Posts by User")
+        print("9. Exit")
         
         choice = input("Select an option: ")
 
@@ -55,6 +120,14 @@ def main():
         elif choice == '4':
             view_posts()
         elif choice == '5':
+            delete_user()
+        elif choice == '6':
+            delete_post()
+        elif choice == '7':
+            update_post()
+        elif choice == '8':
+            search_posts_by_user()
+        elif choice == '9':
             print("Exiting...")
             break
         else:
